@@ -13,8 +13,8 @@ volumes:
   pgdata:
   
 services:
-  db:
-    image: sonar-postgres
+  sonar-postgres:
+    image: postgres
     restart: always
     environment:
       POSTGRES_DB: sonar
