@@ -1,17 +1,6 @@
 #Use root/example as user/password credentials
 version: '3.1'
-
-volumes:
-  sonarqube-conf:
-  
-  sonarqube-data:
-  
-  sonarqube-logs:
-  
-  sonarqube-extensions:
-  
-  pgdata:
-  
+ 
 services:
   sonar-postgres:
     image: postgres
@@ -28,11 +17,12 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
   
   sonarqube:
     image: sonarqube
-    ports: 9000:9000
+    ports: 
+      - "9000:9000"
     restart: always
     environment:
       sonar.jdbc.username=sonar
@@ -46,4 +36,13 @@ services:
     links:
       - sonar-postgres
     
-  
+  volumes:
+    sonarqube-conf:
+    
+    sonarqube-data:
+
+    sonarqube-logs:
+
+    sonarqube-extensions:
+
+    pgdata:
