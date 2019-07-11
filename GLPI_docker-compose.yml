@@ -1,0 +1,47 @@
+#Use root/example as user/password credentials
+version: '3.1'
+
+volumes:
+  glpi-data:
+
+  mysql-data:
+
+services:
+  glpi:
+    image: diouxx/glpi
+    ports:
+      - "8082:80"
+    volumes:
+      - glpi-data:/var/www/html/glpi
+    restart: always
+    environment:
+      - VERSION_GLPI=9.1.2
+      - TIMEZONE=Europe/Madrid
+    links:
+      - mysql
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: glpi
+      MYSQL_USER: glpi
+      MYSQL_PASSWORD: glpi
+      MYSQL_ROOT_PASSWORD: asgard
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./dep/mysql:/docker-entrypoint-initdb.d
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
