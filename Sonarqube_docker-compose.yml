@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER: sonar
       - PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - pgdata: /var/lib/postgresql/data/pgdata
+      - pgdata:/var/lib/postgresql/data/pgdata
   
   adminer:
     image: adminer
@@ -29,10 +29,10 @@ services:
       - sonar.jdbc.password=sonar
       - sonar.jdbc.url=jdbc:postgresql://sonar-postgres/sonar
     volumes:
-      - sonarqube-conf: /opt/sonarqube/conf
-      - sonarqube-data: /opt/sonarqube/data
-      - sonarqube-logs: /opt/sonarqube/logs
-      - sonarqube-extensions: /opt/sonarqube/extensions
+      - sonarqube-conf:/opt/sonarqube/conf
+      - sonarqube-data:/opt/sonarqube/data
+      - sonarqube-logs:/opt/sonarqube/logs
+      - sonarqube-extensions:/opt/sonarqube/extensions
     links:
       - sonar-postgres
     
