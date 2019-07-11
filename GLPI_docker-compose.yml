@@ -26,9 +26,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: glpi
-      MYSQL_USER: glpi
-      MYSQL_PASSWORD: glpi
-      MYSQL_ROOT_PASSWORD: asgard
+      MYSQL_USER: exemple
+      MYSQL_PASSWORD: exemple
+      MYSQL_ROOT_PASSWORD: exemple
     ports:
       - "3306:3306"
     volumes:
