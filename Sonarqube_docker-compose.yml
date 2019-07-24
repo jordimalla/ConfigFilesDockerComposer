@@ -12,6 +12,8 @@ volumes:
     
     pgdata:
     
+    pgadmin-data:
+    
 services:
   sonar-postgres:
     image: postgres
@@ -23,8 +25,6 @@ services:
       - PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
-    network:
-      - sonarqube
   
   pgadmin:
     image: dpage/pgadmin4
@@ -35,7 +35,7 @@ services:
     ports:
       - 5443:443
     volumes:
-      - pgadmin:/var/lib/pgadmin
+      - pgadmin-data:/var/lib/pgadmin
       - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
       - /etc/ssl/private/selfsigned.key:/certs/server.key
       - /tmp/servers.json:/servers.json
@@ -54,7 +54,3 @@ services:
       - sonarqube-data:/opt/sonarqube/data
       - sonarqube-logs:/opt/sonarqube/logs
       - sonarqube-extensions:/opt/sonarqube/extensions
-    links:
-      - sonar-postgres
-
-    pgdata:
