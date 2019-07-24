@@ -19,10 +19,10 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB: "sonar"
-      - POSTGRES_PASSWORD: "sonar"
-      - POSTGRES_USER: "sonar"
-      - PGDATA: "/var/lib/postgresql/data/pgdata"
+      - POSTGRES_DB: 'sonar'
+      - POSTGRES_PASSWORD: 'sonar'
+      - POSTGRES_USER: 'sonar'
+      - PGDATA: '/var/lib/postgresql/data/pgdata'
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
   
