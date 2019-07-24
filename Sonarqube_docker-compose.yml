@@ -17,18 +17,28 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB: "sonar"
-      - POSTGRES_PASSWORD: "sonar"
-      - POSTGRES_USER: "sonar"
+      - POSTGRES_DB: sonar
+      - POSTGRES_PASSWORD: sonar
+      - POSTGRES_USER: sonar
       - PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - pgdata:"/var/lib/postgresql/data/pgdata"
+      - pgdata:/var/lib/postgresql/data/pgdata
+    network:
+      - sonarqube
   
-  adminer:
-    image: adminer
-    restart: always
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: jmalla@spactiva.es
+      PGADMIN_DEFAULT_PASSWORD: asgard
+      PGADMIN_ENABLE_TLS=True
     ports:
-      - 8080:8080
+      9443:443
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
+      - /etc/ssl/private/selfsigned.key:/certs/server.key
+      - /tmp/servers.json:/servers.json
   
   sonarqube:
     image: sonarqube
