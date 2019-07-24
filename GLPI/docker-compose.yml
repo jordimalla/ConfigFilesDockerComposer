@@ -29,6 +29,7 @@ services:
       MYSQL_USER: exemple
       MYSQL_PASSWORD: exemple
       MYSQL_ROOT_PASSWORD: exemple
+      TZ:Europe/Madrid
     ports:
       - "3306:3306"
     volumes:
