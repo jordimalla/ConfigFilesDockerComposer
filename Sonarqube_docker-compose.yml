@@ -10,6 +10,8 @@ volumes:
 
     sonarqube-extensions:
     
+    pgdata:
+    
 services:
   sonar-postgres:
     image: postgres
@@ -20,7 +22,7 @@ services:
       - POSTGRES_USER: "sonar"
       - PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - pgdata:/var/lib/postgresql/data/pgdata
+      - pgdata:"/var/lib/postgresql/data/pgdata"
   
   adminer:
     image: adminer
