@@ -1,6 +1,15 @@
 #Use root/example as user/password credentials
 version: '3.1'
- 
+   
+volumes:
+    sonarqube-conf:
+    
+    sonarqube-data:
+
+    sonarqube-logs:
+
+    sonarqube-extensions:
+    
 services:
   sonar-postgres:
     image: postgres
@@ -35,14 +44,5 @@ services:
       - sonarqube-extensions:/opt/sonarqube/extensions
     links:
       - sonar-postgres
-    
-  volumes:
-    sonarqube-conf:
-    
-    sonarqube-data:
-
-    sonarqube-logs:
-
-    sonarqube-extensions:
 
     pgdata:
