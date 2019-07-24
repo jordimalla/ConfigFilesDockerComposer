@@ -7,7 +7,7 @@
 [![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/spactivajmalla/ConfigFilesDockerComposer/master/PotsgreSQL_docker-composer.yml)
 
 ### TEST POSTGRESQL WHIT PGADMIN WITH SSL
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/spactivajmalla/ConfigFilesDockerComposer/master/pgadmin.yml)
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/jordimalla/ConfigFilesDockerComposer/master/PGADMIN/with-ssl_docker-composer.yml)
 
 ### TEST POSTGRESQL WHIT PGADMIN WITHOUT SSL
 [![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/jordimalla/ConfigFilesDockerComposer/master/PGADMIN/without-ssl_docker-composer.yml)
