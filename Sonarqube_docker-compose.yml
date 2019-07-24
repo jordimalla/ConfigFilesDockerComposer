@@ -29,11 +29,11 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: jmalla@spactiva.es
-      PGADMIN_DEFAULT_PASSWORD: asgard
-      PGADMIN_ENABLE_TLS=True
+      PGADMIN_DEFAULT_EMAIL: exemple@test.com
+      PGADMIN_DEFAULT_PASSWORD: exemple
+      PGADMIN_ENABLE_TLS: 1
     ports:
-      9443:443
+      - 5443:443
     volumes:
       - pgadmin:/var/lib/pgadmin
       - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
