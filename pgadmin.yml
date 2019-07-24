@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "jmalla@spactiva.es"
+      PGADMIN_DEFAULT_PASSWORD: "asgard"
+      PGADMIN_ENABLE_TLS: True
+    ports:
+      9443:443
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
+      - /etc/ssl/private/selfsigned.key:/certs/server.key
+      - /tmp/servers.json:/servers.json
