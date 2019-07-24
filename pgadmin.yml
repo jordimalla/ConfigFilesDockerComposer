@@ -1,14 +1,22 @@
-version: '3'
+# Use postgres/example user/password credentials
+version: '3.1'
 
 services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "jmalla@spactiva.es"
-      PGADMIN_DEFAULT_PASSWORD: "asgard"
-      PGADMIN_ENABLE_TLS: "True"
+      PGADMIN_DEFAULT_EMAIL: test@test.com
+      PGADMIN_DEFAULT_PASSWORD: example
+      PGADMIN_ENABLE_TLS: True
     ports:
-      - 9443:443
+      - 443:443
     volumes:
       - pgadmin:/var/lib/pgadmin
       - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
