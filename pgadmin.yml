@@ -18,7 +18,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: example
       PGADMIN_ENABLE_TLS: 1
     ports:
-      - 443:443
+      - 5443:443
     volumes:
       - pgadmin:/var/lib/pgadmin
       - /etc/ssl/certs/selfsigned.crt:/certs/server.cert
