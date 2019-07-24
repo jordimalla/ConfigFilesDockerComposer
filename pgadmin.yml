@@ -1,8 +1,10 @@
 # Use postgres/example user/password credentials
 version: '3.1'
 
+volumes:
+  pgadmin:
+  
 services:
-
   db:
     image: postgres
     restart: always
