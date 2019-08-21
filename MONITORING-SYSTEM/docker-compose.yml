@@ -35,12 +35,22 @@ services:
       
   kapacitor:
     image: kapacitor
-    restart: always
     depends_on: 
       - influxdb
     environment:
       - KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086
       - KAPACITOR_HOSTNAME=kapacitor
+      
+  cronograf:
+    image: chronograf
+    entrypoint: 'chronograf --kapacitor-url=http://kapacitor:9092 --influxdb-url=http://influxdb:8086'
+    ports:
+      - 8888:8888
+    networks:
+      - monitoring
+    depends_on:
+      - influxdb
+      - kapacitor
 
 networks:
   monitoring:
