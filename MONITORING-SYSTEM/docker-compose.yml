@@ -27,7 +27,6 @@ services:
       - INFLUXDB_USER_PASSWORD=secretpassword
     ports:
       - 8086:8086
-      - 2003:2003
     networks:
       - monitoring
     volumes:
