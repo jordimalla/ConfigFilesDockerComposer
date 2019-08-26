@@ -50,6 +50,13 @@ services:
     depends_on:
       - influxdb
       - kapacitor
+      
+  telegraf:
+    image: telegraf
+    networks:
+      - monitoring
+    volumes:
+      - /srv/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
 
 networks:
   monitoring:
