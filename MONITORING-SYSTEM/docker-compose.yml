@@ -14,6 +14,8 @@ services:
       - monitoring
     volumes:
       - grafana-volume:/var/lib/grafana
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
       
   influxdb:
     image: influxdb
