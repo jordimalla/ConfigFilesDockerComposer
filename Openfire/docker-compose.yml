@@ -1,0 +1,58 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOTPASSWORD
+      MYSQL_DATABASE: DBNAME
+      MYSQL_USER: USERNAME
+      MYSQL_PASSWORD: USERNAMEPASSWORD
+      TZ: Europe/Madrid
+    networks:
+      - openfire
+    volumes:
+      - openfire-mysql:/var/lib/mysql
+
+  openfire:
+    image: quantumobject/docker-openfire
+    restart: always
+    ports:
+      - 9090:9090
+      - 5222:5222
+      - 5269:5269
+      - 5223:5223
+      - 7443:7443
+      - 7777:7777
+      - 7070:7070
+      - 5229:5229
+      - 5275:5275
+    depends_on:
+      - mysql
+    networks:
+      - openfire
+    links:
+      - mysql:db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8082:80
+    depends_on:
+      - mysql
+    networks:
+      - openfire
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+
+networks:
+  openfire:
+
+volumes:
+  openfire-mysql:
